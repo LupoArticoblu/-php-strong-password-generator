@@ -14,6 +14,10 @@ if(isset ($_POST['Genera'])){
   //creare una funzione che: 1 riconoscere il numero inserito nel input e restituire in stampa tanti elementi quanto il numero inserito 2 se il numero è minore di 8 riportare errore e stampare una cosa tipo "il numero inserito dev'essere maggiore di 8" 3 se il numero è maggiore di 32 ripetere la stampa precedente ma dicendo "minore di 32"
 }
 
+//if($length >= 8 || $length <= 32){
+  //echo $i = 0; $i < $length; $i++;
+//}
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +37,7 @@ if(isset ($_POST['Genera'])){
       <input type="text" class="form-control my-3" name="Length" placeholder="Digita un numero da 8 a 32">
       <input type="submit" name="Genera" value="Genera">
     </form>
-    <?php echo $mixed ?>
+    <?php //echo  ?>
   </div>
   
 </body>
