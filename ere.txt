@@ -1,0 +1,5 @@
+<?php if (empty($_GET['Length'])) : ?>
+        <h6 class="text-warning"><strong>Inserisci un valore!</strong></h6>
+      <?php else : ?>
+        <h6 class="text-dark">La tua password: <span class="text-white"><?php echo $password ?></span></h6>
+      <?php endif ?>

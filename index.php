@@ -16,14 +16,10 @@ function pass_generated($length){
   //ciclo "se la password è compresa tra 8 e 32 caratteri, allora..."
   if($length >= 8 && $length <= 32){
     for ($i = 0; $i < $length; $i++){
-        $random_index = rand(0, strlen($mainCasual));
+        $random_index = rand(0, strlen($mainCasual) - 1);
         //concatenazione sta a password, che è stringa vuota, aggiunge a se stessa un carattere di $maincasual, per tutti i cicli richiesti
-        $password.= $mainCasual[$random_index];       
+        $password.= substr($mainCasual,$random_index, 1);       
     }
-  } elseif($length < 8){
-    echo "<span>La password deve essere di almeno 8 caratteri</span>" 
-  } else{
-    echo "<span>La password deve essere di massimo 32 caratteri</span>"
   }
   return $password;
 }
@@ -32,8 +28,8 @@ function pass_generated($length){
 
 
 
-if (!empty($_POST['Length'])){
-  $_SESSION['password'] = pass_generated($length);
+if (isset($_GET['Length'])){
+  $password = pass_generated($_GET['Length']);
 }
 
 // if(isset ($_POST['Genera'])){
@@ -65,12 +61,20 @@ if (!empty($_POST['Length'])){
 <body>
   <div class="container">
     <h1 class="text-center text-primary">Strong Password Generator</h1>
-    <form class="text-center" action="index.php" method="post">
+    
+    <?php if (empty($_GET['Length'])) : ?>
+    <form class="text-center" action="index.php" method="get">
       <label class="h2 mt-5" for="input_password">Lunghezza password?</label>
       <input type="text" class="form-control my-3" name="Length" placeholder="Digita un numero da 8 a 32">
       <input type="submit" name="Genera" value="Genera">
+      
+      <?php else : ?>
+        <h6 class="text-dark">La tua password: <span class="text-white"><?php echo $password ?></span></h6>
+      <?php endif ?>
     </form>
-    <?php echo $_SESSION['password'] ?>
+        
+    
+    
   </div>
   
 </body>
