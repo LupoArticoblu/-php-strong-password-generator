@@ -1,22 +1,52 @@
 <?php
 
-if(isset ($_POST['Genera'])){
-  $upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  $lower_case = "abcdifghijklmnopqrstuvwxyz";
-  $numbers = "0123456789";
-  $special = "!?&%$<>^+-*/()[]{}@#_=";
-
-  $generated_upper_case = substr(str_shuffle($upper_case), 0, 25);
-  $generated_lower_case = substr(str_shuffle($lower_case), 0, 25);
-  $generated_numbers = substr(str_shuffle($numbers), 0, 9);
-  $generated_special = substr(str_shuffle($special), 0, 22);
-
-  //creare una funzione che: 1 riconoscere il numero inserito nel input e restituire in stampa tanti elementi quanto il numero inserito 2 se il numero è minore di 8 riportare errore e stampare una cosa tipo "il numero inserito dev'essere maggiore di 8" 3 se il numero è maggiore di 32 ripetere la stampa precedente ma dicendo "minore di 32"
+//1 controllo dell'attività della sessione
+if(!isset($_SESSION)){
+  session_start();
 }
 
-//if($length >= 8 || $length <= 32){
-  //echo $i = 0; $i < $length; $i++;
+//dati
+$mainCasual = [
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?&%$<>^+-*/()[]{}@#_="
+];
+
+//funzione con 2 parametri: 1 i dati. 2 la lunghezza richiesta dall'utente
+function pass_generated($mainCasual, $length){
+
+  //variabile
+  $password = '';
+  
+  //ciclo "se la password è compresa tra 8 e 32 caratteri, allora..."
+  if($length >= 8 || $length <= 32){
+    for ($i = 0; $i < $length; $i++){
+      $code = rand($mainCasual);
+    }
+  }
+
+}
+
+
+
+
+
+if (!empty($_POST['Length'])){
+  $_SESSION['password'] = 
+}
+
+// if(isset ($_POST['Genera'])){
+//   $upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//   $lower_case = "abcdefghijklmnopqrstuvwxyz";
+//   $numbers = "0123456789";
+//   $special = "!?&%$<>^+-*/()[]{}@#_=";
+
+//   $generated_upper_case = substr(str_shuffle($upper_case), 0, 25);
+//   $generated_lower_case = substr(str_shuffle($lower_case), 0, 25);
+//   $generated_numbers = substr(str_shuffle($numbers), 0, 9);
+//   $generated_special = substr(str_shuffle($special), 0, 22);
+
+  //creare una funzione che: 1 riconoscere il numero inserito nel input e restituire in stampa tanti elementi quanto il numero inserito 2 se il numero è minore di 8 riportare errore e stampare una cosa tipo "il numero inserito dev'essere maggiore di 8" 3 se il numero è maggiore di 32 ripetere la stampa precedente ma dicendo "minore di 32"
 //}
+
 
 ?>
 
@@ -37,7 +67,7 @@ if(isset ($_POST['Genera'])){
       <input type="text" class="form-control my-3" name="Length" placeholder="Digita un numero da 8 a 32">
       <input type="submit" name="Genera" value="Genera">
     </form>
-    <?php //echo  ?>
+    <?php echo  ?>
   </div>
   
 </body>
