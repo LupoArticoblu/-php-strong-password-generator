@@ -19,6 +19,8 @@ function pass_generated($length){
         //concatenazione sta a password, che è stringa vuota, aggiunge a se stessa un carattere di $maincasual, per tutti i cicli richiesti
         $password.= substr($mainCasual,$random_index, 1);       
     }
+  }else{
+    $password = 'la lunghezza della password dev\'essere compresa tra gli 8 e i 32 caratteri';
   }
   return $password;
 
